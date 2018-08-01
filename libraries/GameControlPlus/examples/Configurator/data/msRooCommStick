@@ -1,0 +1,7 @@
+roomba drive
+X	x=turn angle	3	SLIDER	x	0	1.0	0.04
+Y	y=fwd/back	3	SLIDER	y	0	1.0	0.04
+V	speed	3	SLIDER	slider	0	1.0	0.0
+S	stop	1	BUTTON	1	0	0.0	0.0
+R	right spin	1	BUTTON	3	0	0.0	0.0
+L	left spin	1	BUTTON	2	0	0.0	0.0

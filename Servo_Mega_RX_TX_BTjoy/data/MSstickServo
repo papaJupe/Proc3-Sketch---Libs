@@ -1,0 +1,7 @@
+pan tilt 2 servos
+X	pan	3	SLIDER	x	0	1.0	0.04
+Y	tilt	3	SLIDER	y	0	1.0	0.04
+LEFT	panLbutt	1	BUTTON	2	0	0.0	0.0
+RIGHT	panRbutt	1	BUTTON	3	0	0.0	0.0
+UP	tilt up	1	BUTTON	4	0	0.0	0.0
+DOWN	tilt down	1	BUTTON	7	0	0.0	0.0
