@@ -21,8 +21,8 @@
  * Boston, MA  02111-1307  USA
  * 
  * @author      Javier Gracia Carpio http://jagracar.com
- * @modified    01/28/2018
- * @version     1.8.0 (9)
+ * @modified    09/27/2018
+ * @version     1.9.0 (10)
  */
 
 package grafica;
@@ -1922,10 +1922,10 @@ public class GLayer implements PConstants {
 	public void addPoint(int index, float x, float y, String label) {
 		points.add(index, x, y, label);
 		plotPoints.add(index, valueToXPlot(x), valueToYPlot(y), label);
-		inside.add(index, isInside(plotPoints.getLastPoint()));
+		inside.add(index, isInside(plotPoints.get(index)));
 
 		if (hist != null) {
-			hist.addPlotPoint(index, plotPoints.getLastPoint());
+			hist.addPlotPoint(index, plotPoints.get(index));
 		}
 	}
 

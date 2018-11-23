@@ -5,7 +5,7 @@
  back ack; this mod sends u or d to control servo tilt,
  later mods added GUI, joystick button controls w/ Enjoyable
  app (looks like it sends capital letter but really small), later v.
- uses GCP to read axis (#) vals from stick -- ServoMegaRxTxJoy
+ -- ServoMegaRxTxJoy --  uses GCP to read axis (#) vals from stick
  
  Ardu code: Servo Mega tx rx BT
  Use: config BT mod on Ardu, enable BT on PC, Pair, for Joystk, open

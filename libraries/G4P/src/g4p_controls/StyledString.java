@@ -1035,6 +1035,29 @@ public final class StyledString implements GConstantsInternal, Serializable {
 	}
 
 	/** 
+	 * Ensure we do not have more than 2consecutive blank lines. This can happen when 
+	 * manually deleting a line adjacent to a blank line.
+	 * 
+	 */
+	protected void removeConsecutiveBlankLines(){
+		plainText = removeTripleSpacingFromPlainText(plainText);
+	}
+	
+	/** 
+	 * Ensure we do not have more than 2 consecutive blank lines. This can happen when 
+	 * manually deleting a line adjacent to a blank line. This is done by replacing 
+	 * triple EOL characters by double EOL until there are only double EOLs. <br>
+	 * 
+	 */
+	private String removeTripleSpacingFromPlainText(String chars){
+		while(chars.indexOf("\n\n\n") >= 0){
+			invalidText = true;
+			chars = chars.replaceAll("\n\n\n", "\n\n");
+		}
+		return chars;
+	}
+	
+	/** 
 	 * Ensure we do not have blank lines by replacing double EOL characters by 
 	 * single EOL until there are only single EOLs. <br>
 	 * Using replaceAll on its own will not work because EOL/EOL/EOL would 

@@ -8,7 +8,9 @@
  v. 4  adds user input, sensor() call in sketch, change serialEvent
  & sensor data handling in RooComm, v. 5 adds GCP(joystk) I/O, display
  of input data to applet, optional display of sensor array to console
- upon startup
+ upon startup; works with direct wired USB-ser dongle and BT2 (HC06 et
+ al) module on R comm to ser port on Mac; latter need manual enable
+ of Roo DTR pin w/ wire or momentary switch
  */
 
 import processing.serial.*;
@@ -44,7 +46,7 @@ void setup()
   // myPort.buffer(26); // need full dataset to trigger serEvent in RooComm
   // but serEvent in RC class does not get message from either buffer(_)
   // so simpler ser.avail used in RC now, works fine.
-
+   // GCP setups
   // Initialise the ControlIO, make joystk instance
   control = ControlIO.getInstance(this);
   // Find a device that matches a configuration file in /data dir
@@ -53,7 +55,7 @@ void setup()
   if (stick == null) {
     println("No input control matching config found");
     System.exit(-1); // End the program!
-  }
+  } // end if
 
   roo = new RooComm();  
 
@@ -223,7 +225,7 @@ void draw() {
   //// .write(char)x sends nonprinting low chars, this sends # as byte
 
   // convert stick input numbers to commands; map y to drive direction,
-  // x to turn radius, v to speed
+  // x to turn radius, v to speed; x = 50 is centered, go straight
   // radius setting complex: need large # sent from small deviation
   if (x < 50) rad = x * 10; // L turn, range 2-49 => 20-490
   else if (x > 50) rad = (x-100) *10; // R turn, 51-98 => -490 to -2

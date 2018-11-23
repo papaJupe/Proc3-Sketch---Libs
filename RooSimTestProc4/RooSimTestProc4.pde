@@ -1,4 +1,3 @@
-
 /*
  * rooSimpleTestProc4
  *

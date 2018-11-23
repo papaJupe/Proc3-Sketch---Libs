@@ -1,7 +1,9 @@
 G4P changes incorporated into version
 
 V4.1.4 (33)
-Fixes bug in StyledString that throws exception when text with multiple consecutive  newline characters are in the text to set (ticket 24)
+Fixes bug in StyledString that throws exception when text with multiple consecutive newline characters are in the text to set (ticket 24)
+
+Fixes bug in GTextArea where the text does not scroll to the end when appending text. (ticket 25)
 
 V4.1.3 (32)
 The select file dialog boxes now support option to specify starting folder. (Ticket 21)

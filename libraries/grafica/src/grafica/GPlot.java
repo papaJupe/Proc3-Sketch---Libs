@@ -21,8 +21,8 @@
  * Boston, MA  02111-1307  USA
  * 
  * @author      Javier Gracia Carpio http://jagracar.com
- * @modified    01/28/2018
- * @version     1.8.0 (9)
+ * @modified    09/27/2018
+ * @version     1.9.0 (10)
  */
 
 package grafica;
@@ -733,6 +733,7 @@ public class GPlot implements PConstants {
 
 		// Fix the limits
 		fixedXLim = true;
+		fixedYLim = true;
 
 		// Move the horizontal axes
 		xAxis.moveLim(xLim);
@@ -760,6 +761,7 @@ public class GPlot implements PConstants {
 		}
 
 		// Fix the limits
+		fixedXLim = true;
 		fixedYLim = true;
 
 		// Move the vertical axes
@@ -1378,7 +1380,7 @@ public class GPlot implements PConstants {
 			} else {
 				parent.fill(layerList.get(i - 1).getLineColor());
 				parent.rect(plotPosition[0] - 15, plotPosition[1], 14, 14);
-				layerList.get(i - i).drawAnnotation(text[i], position[0], position[1], LEFT, CENTER);
+				layerList.get(i - 1).drawAnnotation(text[i], position[0], position[1], LEFT, CENTER);
 			}
 		}
 

@@ -21,8 +21,8 @@
  * Boston, MA  02111-1307  USA
  * 
  * @author      Javier Gracia Carpio http://jagracar.com
- * @modified    01/28/2018
- * @version     1.8.0 (9)
+ * @modified    09/27/2018
+ * @version     1.9.0 (10)
  */
 
 package grafica;
@@ -876,9 +876,9 @@ public class GAxis implements PConstants {
 		if (newNTicks >= 0) {
 			nTicks = newNTicks;
 			ticksSeparation = -1;
+			fixedTicks = false;
 
 			if (!log) {
-				fixedTicks = false;
 				updateTicks();
 				updatePlotTicks();
 				updateTicksInside();
@@ -894,9 +894,9 @@ public class GAxis implements PConstants {
 	 */
 	public void setTicksSeparation(float newTicksSeparation) {
 		ticksSeparation = newTicksSeparation;
+		fixedTicks = false;
 
 		if (!log) {
-			fixedTicks = false;
 			updateTicks();
 			updatePlotTicks();
 			updateTicksInside();
