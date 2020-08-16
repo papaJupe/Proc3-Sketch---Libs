@@ -1,7 +1,7 @@
 /*
  * rooSimpleTestProc4
  *
- * sketch does user I/O; uses RooComm class to send stuff to R
+ * sketch does user I/O; uses RooComm class to send / read to Roo
  *
  * first, run separate listSerPort sketch to see portname/indices,
  then paste below
@@ -27,7 +27,7 @@ void setup()
 
   RooComm roo = new RooComm();  
 
-  if ( !roo.connect() ) {  // just tests that port exists
+  if ( !roo.connect() ) {  // just tests that port was created above
     println("Couldn't connect to " + portName);
     System.exit(1);
   }

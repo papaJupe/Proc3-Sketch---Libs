@@ -97,7 +97,7 @@ public class RooComm    // was abstract, now inner class of Papplet
   /** internal app's storage for all roomba sensor data */
   byte[] sensor_bytes = new byte[26];  // array size, need 1024 ?
 
-  /** ? connected to a serial port (local), not necessarily to R */
+  /** ? connected to a serial port (local), not necessarily to Roo */
   boolean connected = false;  // could make depend on sensorsValid ?
 
   /* ======================*/
@@ -138,7 +138,7 @@ public class RooComm    // was abstract, now inner class of Papplet
         }
       }
     }
-    ).start();
+    ).start();  // end new Thred
   }  // end autoUpdate
 
   /* =========== connect, start, send()s, get/set modes ===========*/
@@ -149,7 +149,7 @@ public class RooComm    // was abstract, now inner class of Papplet
    */
   public boolean connect()  // return T/F, if there's a port obj
   {
-    if (myPort != null)  // & sensorsValid  
+    if (myPort != null)  // add ? & sensorsValid  
       connected = true; 
     else
       connected = false; // could exit here vs. going back to sketch
@@ -389,7 +389,7 @@ public class RooComm    // was abstract, now inner class of Papplet
     goStraight( distance );
   }
 
-  // @param distance distance in millimeters, positive 
+  // @param distance in millimeters, positive 
 
   public void goBackward( int distance ) {
     if ( distance < 0 ) return;
@@ -442,7 +442,7 @@ public class RooComm    // was abstract, now inner class of Papplet
   public void spinLeft() {
     spinLeftAt( 100 );  // was speed
   }
-  // if no param,Spin in place clockwise, at current speed
+  // if no param, Spin in place clockwise, at current speed
 
   public void spinRight() {
     spinRightAt( 100 );
@@ -749,11 +749,12 @@ public class RooComm    // was abstract, now inner class of Papplet
 
   public boolean safetyFault() { 
     return safetyFault;
-  } 
-  // this secondary validation fx (tests currency) - not called anywhere
+  }
+   
+  // this secondary validation fx (tests currency) - now not called anywhere
   public boolean sensorsValid() {
-    // sV var may be valid but stale, so where would this be used?
-    if ( sensorsValid ) { 
+    // sV value may be valid but stale, so where would this be used?
+    if ( sensorsValid ) { // sets var to false if stale
       long difftime = System.currentTimeMillis() - sensorsLastUpdateTime;
       if ( difftime > 2*sensorsUpdateTime ) // give it some slack
       { 
@@ -1123,8 +1124,8 @@ public class RooComm    // was abstract, now inner class of Papplet
   public static final int DOCK    =  143;  // 0
   public static final int PWMMOTORS = 144; // 3
   public static final int DRIVEWHEELS = 145;  // 4
-  public static final int DRIVEPWM = 146;      // 4
-  public static final int STREAM  =  148;       // N+1
+  public static final int DRIVEPWM = 146;     // 4
+  public static final int STREAM  =  148;     // N+1
   public static final int QUERYLIST = 149;       // N+1
   public static final int STOPSTARTSTREAM = 150;  // 1
   public static final int SCHEDULINGLEDS = 162;   // 2
